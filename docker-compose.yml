@@ -1,0 +1,11 @@
+services:
+  hammerhead-connector:
+    image: ghcr.io/dreeveapp/dreeve-hammerhead-connector:latest
+    container_name: dreeve-hammerhead-connector
+    restart: unless-stopped
+    env_file: ./.env
+    volumes:
+      # The same ./watch folder the app and daemon mount.
+      - ./watch:/data/dreeve/watch
+      - ./hammerhead/state:/data/hammerhead/state
+      - ./hammerhead/tokens:/data/hammerhead/tokens
